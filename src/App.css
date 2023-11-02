@@ -5,6 +5,10 @@
   gap: 1rem;
 }
 
+.container {
+  height: calc(100vh - 10rem);
+}
+
 .container:nth-child(1) {
   width: 60%;
   flex: 0 0 60%;
@@ -16,12 +20,12 @@
 
 iframe {
   width: 100%;
-  height: 500px;
+  height: 100%;
   border: none;
 }
 
 .row {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,7 +34,9 @@ iframe {
 }
 
 .title {
-
+ margin: 0 0 0.5rem;
+ padding: 0;
+ font-weight: 500;
 }
 
 .col {
@@ -38,4 +44,18 @@ iframe {
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
+}
+
+.option {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  color: #fff;
+  background: #6b8faf;
+  border-radius: 0.25rem;
+  transition: all 100ms ease;
+}
+
+.option:hover {
+  background: #1890ff;
 }
