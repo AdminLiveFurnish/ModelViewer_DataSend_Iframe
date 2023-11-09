@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        {/* Add the link to the model viewer iframe here */}}
         <iframe id="modelViewerFrame" src="https://mainecottage.imagine.io/3" allowFullScreen />
       </div>
 
@@ -27,6 +28,7 @@ function App() {
         <div className="row">
           <p className="title">Upholstery</p>
           <div className="col">
+            {/* send information is a json format to the iframe here */}
             <button className="option" onClick={() => sendData({ name: "Thatch : Bluebell", type: 'Upholstery' })}>Thatch: Bluebell</button>
             <button className="option" onClick={() => sendData({ name: "Boomerang: Cloud", type: 'Upholstery' })}>Boomerang: Cloud</button>
             <button className="option" onClick={() => sendData({ name: "Crazy Daisy : Nikko Blue", type: 'Upholstery' })}>Crazy Daisy: Nikko Blue</button>
