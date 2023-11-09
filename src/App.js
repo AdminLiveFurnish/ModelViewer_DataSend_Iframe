@@ -20,7 +20,6 @@ function App() {
     <div className="App">
       <div className="container">
         <iframe id="modelViewerFrame" src="https://mainecottage.imagine.io/3" allowFullScreen />
-        {/* <iframe id="modelViewerFrame" src="http://localhost:3000/1" allowFullScreen /> */}
       </div>
 
       <div className="container">
