@@ -1,7 +1,9 @@
 import "./App.css";
+import {useEffect, useState} from 'react'
 
 function App() {
 
+  const [productImage, setProductImage] = useState('');
   const sendMessageToParent = (data = null) => {
     const iframe = document.querySelector("#modelViewerFrame");
     if(iframe) {
@@ -16,11 +18,24 @@ function App() {
     sendMessageToParent(values)
   }
 
+  function onMessageHandler(event) {
+    console.log("event", event);
+    if (typeof event.data === "string" && event.data !== '') {
+      // messageArea.innerText = event.data;
+      console.log("data sent to parent : " + event.data);
+      setProductImage(event.data);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("message", onMessageHandler);
+  }, [])
+
   return (
     <div className="App">
       <div className="container">
-        {/* Add the link to the model viewer iframe here */}}
-        <iframe id="modelViewerFrame" src="https://mainecottage.imagine.io/3" allowFullScreen />
+        {/* Add the link to the model viewer iframe here */}
+        <iframe id="modelViewerFrame" src="http://localhost:3000/8" allowFullScreen />
       </div>
 
       <div className="container">
@@ -42,6 +57,14 @@ function App() {
             <button className="option" onClick={() => sendData({ name: "Nordic", type: 'Leg Finish' })}>Nordic</button>
             <button className="option" onClick={() => sendData({ name: "Fruitwood", type: 'Leg Finish' })}>Fruitwood</button>
             <button className="option" onClick={() => sendData({ name: "Java", type: 'Leg Finish' })}>Java</button>
+          </div>
+        </div>
+
+        <div className="row">
+          <p>Get your checkout image here - </p>
+          <div className="col">
+            <button onClick={() => sendData({ name: "getImage", type: 'button' })}>Get Image</button>
+            {productImage && productImage !== '' && <img src={productImage} alt="prodImg"/>}
           </div>
         </div>
 
