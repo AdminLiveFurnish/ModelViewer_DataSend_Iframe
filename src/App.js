@@ -6,17 +6,17 @@ function App() {
   const [productImage, setProductImage] = useState('');
   const sendMessageToParent = (data = null) => {
     const iframe = document.querySelector("#modelViewerFrame");
-    if(iframe) {
+    if (iframe) {
       iframe.contentWindow.postMessage(data, "*");
       console.log("data sent to child: " + data);
     }
-  }
+  };
 
   const sendData = (values) => {
-    if(!values) return;
-    console.log("values", values)
-    sendMessageToParent(values)
-  }
+    if (!values) return;
+    console.log("values", values);
+    sendMessageToParent(values);
+  };
 
   function onMessageHandler(event) {
     console.log("event", event);
@@ -35,28 +35,103 @@ function App() {
     <div className="App">
       <div className="container">
         {/* Add the link to the model viewer iframe here */}
-        <iframe id="modelViewerFrame" src="http://localhost:3000/8" allowFullScreen />
+        <iframe
+          id="modelViewerFrame"
+          src="https://mainecottage.imagine.io/15"
+          // src="http://localhost:3002/15"
+          allowFullScreen
+        />
       </div>
 
       <div className="container">
+        <div className="row">
+          <p className="title">Movement</p>
+          <div className="col">
+            {/* send information is a json format to the iframe here */}
+            <button
+              className="option"
+              onClick={() =>
+                sendData({ name: "Stationary", type: "Variation" })
+              }
+            >
+              Stationary
+            </button>
+            <button
+              className="option"
+              onClick={() =>
+                sendData({ name: "Swivel", type: "Variation" })
+              }
+            >
+              Swivel
+            </button>
+          </div>
+        </div>
 
         <div className="row">
           <p className="title">Upholstery</p>
           <div className="col">
             {/* send information is a json format to the iframe here */}
-            <button className="option" onClick={() => sendData({ name: "Thatch : Bluebell", type: 'Upholstery' })}>Thatch: Bluebell</button>
-            <button className="option" onClick={() => sendData({ name: "Boomerang: Cloud", type: 'Upholstery' })}>Boomerang: Cloud</button>
-            <button className="option" onClick={() => sendData({ name: "Crazy Daisy : Nikko Blue", type: 'Upholstery' })}>Crazy Daisy: Nikko Blue</button>
-            <button className="option" onClick={() => sendData({ name: "Grand Mum : Sun", type: 'Upholstery' })}>Grand Mum: Sun</button>
+            <button
+              className="option"
+              onClick={() =>
+                sendData({ name: "Thatch : Bluebell", type: "Upholstery" })
+              }
+            >
+              Thatch: Bluebell
+            </button>
+            <button
+              className="option"
+              onClick={() =>
+                sendData({ name: "Clambake: Marine", type: "Upholstery" })
+              }
+            >
+              Boomerang: Cloud
+            </button>
+            <button
+              className="option"
+              onClick={() =>
+                sendData({
+                  name: "Crazy Daisy : Nikko Blue",
+                  type: "Upholstery",
+                })
+              }
+            >
+              Crazy Daisy: Nikko Blue
+            </button>
+            <button
+              className="option"
+              onClick={() =>
+                sendData({ name: "Grand Mum : Sun", type: "Upholstery" })
+              }
+            >
+              Grand Mum: Sun
+            </button>
           </div>
         </div>
 
         <div className="row">
           <p className="title">Leg</p>
           <div className="col">
-            <button className="option" onClick={() => sendData({ name: "Nordic", type: 'Leg Finish' })}>Nordic</button>
-            <button className="option" onClick={() => sendData({ name: "Fruitwood", type: 'Leg Finish' })}>Fruitwood</button>
-            <button className="option" onClick={() => sendData({ name: "Java", type: 'Leg Finish' })}>Java</button>
+            <button
+              className="option"
+              onClick={() => sendData({ name: "Nordic", type: "Leg Finish" })}
+            >
+              Nordic
+            </button>
+            <button
+              className="option"
+              onClick={() =>
+                sendData({ name: "Fruitwood", type: "Leg Finish" })
+              }
+            >
+              Fruitwood
+            </button>
+            <button
+              className="option"
+              onClick={() => sendData({ name: "Java", type: "Leg Finish" })}
+            >
+              Java
+            </button>
           </div>
         </div>
 
